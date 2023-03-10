@@ -3,6 +3,11 @@ html {
     font-size: 10px;
 }
 
+input[type=radio] {
+    position: absolute;
+    left: -999px;
+}    
+
 .container {
     max-width: 768px;
     width: 100%;
@@ -27,13 +32,10 @@ html {
 }
 
 .meme__item {
+    display: block;
     padding: 10px 0;
     border-top: 1px solid #dfdfdf;
     cursor: pointer;
-}
-
-.meme__item:nth-child(4) .meme__item__body {
-    display: block;
 }
 
 .meme__item__header {
@@ -46,6 +48,15 @@ html {
     content: "";
     position: absolute;
     right: 10px;
+    transition: all .3s ease-in;
+}
+
+.meme__list:hover .meme__item__header:after {
+    content: "+";
+}
+
+.meme__item:hover .meme__item__header:after {
+    content: "-";
 }
 
 .meme__item__body {
@@ -57,28 +68,16 @@ html {
     display: none;
 }
 
-/* показываем при наведении на список */
-.meme__list:hover .meme__item__header:after {
-    content: "+";
+/* показываем тело при наведении */
+.meme__item:hover .meme__item__body {
+    display: block;
 }
 
-/* показываем при наведении на элемент */
-.meme__item:hover .meme__item__header:after {
+/* обрабатываем выбранный */
+input[type=radio]:checked + .meme__item > .meme__item__body {
+    display: block;
+}
+
+.meme__list:hover input[type=radio]:checked + .meme__item > .meme__item__header:after {
     content: "-";
 }
-
-/* показываем тело */
-.meme__item:hover .meme__item__header ~ .meme__item__body {
-    display: block;
-}
-
-/*  */
-.meme__item:active .meme__item__header ~ .meme__item__body {
-    display: block;
-}
-
-/* показываем при наведениие
-.meme__item__header:hover ~ .meme__item__body {
-    display: block;
-}
-*/
