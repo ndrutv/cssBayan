@@ -58,7 +58,7 @@ input[type=radio] {
 }
 
 .meme__item__header__title{
-    color: #878787;
+    color: #cacaca;
     transition: all .3s ease-in;
 }
 
@@ -107,11 +107,14 @@ input[type=radio]:checked + .meme__item .meme__item__header__title {
     color: #cacaca;
 }
 
-
-
 @media (min-width: 821px) {
     .meme__item {
         cursor: pointer;
+    }
+
+    .meme__item__header__title{
+        color: #878787;
+        transition: all .3s ease-in;
     }
     
     .meme__item__header__arrow {
@@ -160,8 +163,6 @@ input[type=radio]:checked + .meme__item .meme__item__header__title {
     }
 }
 
-
-
 @media (max-width: 820px) { 
     .accordion__title {
         font-size: 3.5rem;
@@ -175,8 +176,6 @@ input[type=radio]:checked + .meme__item .meme__item__header__title {
         transform: rotate(225deg)
     }
 }
-
-
 
 @media (max-width: 400px) { 
     .container {
