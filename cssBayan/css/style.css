@@ -1,5 +1,5 @@
 html {
-    font-size: 10px;
+    font-size: 62.5%;
 }
 
 body {
@@ -9,8 +9,7 @@ body {
 }
 
 input[type=radio] {
-    position: absolute;
-    left: -999px;
+    display: none;
 }
 
 .main {
@@ -20,19 +19,19 @@ input[type=radio] {
 .accordion {
     display: flex;
     justify-content: center;
-    padding: 50px 0;
+    padding: 5rem 0;
 }
 
 .accordion__inner {
-    padding: 15px 20px;
-    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    border-radius: .8rem;
     background-color: #242526;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100rem;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 2rem;
 }
 
 .accordion__title {
@@ -43,81 +42,123 @@ input[type=radio] {
 .meme__list {
     display: flex;
     flex-direction: column;
-    margin: 20px 0 0;
+    margin: 2rem 0 0;
 }
 
 .meme__item {
-    padding: 10px 0;
-    border-top: 1px solid #b0b3b81a;
-    cursor: pointer;
+    padding: 1rem 0;
+    border-top: .1rem solid #b0b3b81a;
 }
 
 .meme__item__header {
-    position: relative;
-    padding: 0 30px 0 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
     font-size: 2rem;
     font-weight: 700;
 }
 
-.meme__item__header:after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    transition: all .2s ease-in;
-}
-
-.meme__list:hover .meme__item__header:after {
-    content: "+";
-}
-
-.meme__item:hover .meme__item__header:after {
-    transform: rotate(45deg);
-    color: #535353;
+.meme__item__header__arrow {
+    opacity: 1;
+    transition: all .3s ease-in;
 }
 
 .meme__item__body {
     display: flex;
     justify-content: center;
-    position: absolute;
-    left: -9999px;
-    height: 450px;
-    margin: 20px 0 10px;
-    padding: 10px 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
     background-color: #18191a;
-    border-radius: 8px;
-    font-size: 1.5rem;
+    border-radius: .8rem;
+    height: 0;
     opacity: 0;
-    transition: position .3s, opacity .5s ease-in;
-}
-
-.meme__item:hover .meme__item__body {
-    position: inherit;
-    opacity: 1;
+    transition: all .2s ease-in;
 }
 
 input[type=radio]:checked + .meme__item > .meme__item__body {
-    position: inherit;
+    height: 45rem;
+    margin: 2rem 0 1rem;
+    padding: 1rem 0;
     opacity: 1;
 }
 
-.meme__list:hover input[type=radio]:checked + .meme__item > .meme__item__header:after {
-    transform: rotate(225deg)
+input[type=radio]:checked + .meme__item .meme__item__body__image {
+    opacity: 1;
+    width: 100%;
 }
 
 .meme__item__body__image {
-    max-width: 400px;
-    width: 100%;
+    max-width: 40rem;
+    width: 0;
     object-fit: contain;
+    opacity: 0;
+    transition: opacity .6s, width .6s ease-in;
 }
+
+
+
+@media (min-width: 821px) {
+    .meme__item {
+        cursor: pointer;
+    }
+    
+    .meme__item__header__arrow {
+        opacity: 0;
+    }
+
+    .meme__list:hover .meme__item__header__arrow {
+        opacity: 1;
+    }
+    
+    .meme__item:hover .meme__item__header__arrow {
+        transform: rotate(45deg);
+        color: #535353;
+    }
+    
+    .meme__item:hover .meme__item__body {
+        height: 45rem;
+        margin: 2rem 0 1rem;
+        padding: 1rem 0;
+        opacity: 1;
+    }
+    
+    .meme__list:hover input[type=radio]:checked + .meme__item .meme__item__header__arrow {
+        transform: rotate(225deg)
+    }
+    
+    .meme__item:hover .meme__item__body__image {
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+
 
 @media (max-width: 820px) { 
     .container {
         padding: 0;
     }
+
+    .meme__list:focus input[type=radio]:checked + .meme__item .meme__item__header__arrow {
+        color: #535353;
+        transform: rotate(225deg)
+    }
 }
 
-@media (max-width: 320px) { 
-    .meme__item__body {
-        height: 330px;
+
+
+@media (max-width: 400px) { 
+    .accordion__title {
+        font-size: 2.7rem;
+    }
+
+    .meme__item__header {
+        font-size: 1.5rem;
+        padding: 0;
+    }
+    
+    input[type=radio]:checked + .meme__item > .meme__item__body {
+        height: 30rem;
     }
 }
